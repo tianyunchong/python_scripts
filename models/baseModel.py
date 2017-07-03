@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import ConfigParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+BaseModel = declarative_base()
 class BaseInitModel(object):
     '''
      base model
@@ -12,11 +13,9 @@ class BaseInitModel(object):
     defConfig = ""
     cpParser = None
     session = None
-    baseModel = None
 
     def __init__(self, dbConfig):
         self.defConfig = dbConfig
-        self.baseModel = declarative_base()
         self.initByDbConf()
         self.initConnection()
 
